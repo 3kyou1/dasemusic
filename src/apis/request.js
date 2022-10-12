@@ -1,6 +1,6 @@
 // import needle from 'needle'
 // import progress from 'request-progress'
-import BackgroundTimer from 'react-native-background-timer'
+// import BackgroundTimer from 'react-native-background-timer'
 import { debugRequest } from './env'
 import { requestMsg } from './message'
 import { bHh } from './music/options'
@@ -158,7 +158,7 @@ const fetchData = (url, { timeout = 15000, ...options }) => {
   console.log('---start---', url)
 
   const controller = new global.AbortController()
-  const id = BackgroundTimer.setTimeout(() => controller.abort(), timeout)
+  // const id = BackgroundTimer.setTimeout(() => controller.abort(), timeout)
 
   return {
     request: handleRequestData(url, options).then(options => {
@@ -166,7 +166,7 @@ const fetchData = (url, { timeout = 15000, ...options }) => {
         ...options,
         signal: controller.signal,
       }).then(response => {
-        BackgroundTimer.clearTimeout(id)
+        // BackgroundTimer.clearTimeout(id)
         return response
       }).then(resp => resp.text().then(text => {
         // console.log(options, headers, text)
